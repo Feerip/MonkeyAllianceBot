@@ -118,6 +118,9 @@ namespace MonkeyAllianceBot.Services
             string DarkGrimoire = "Images/DarkGrimoire.png";
             connectionManager.AddExistingServer("Dark Grimoire", 625996199597703168, 902989021209317456, DarkGrimoire, _client);
 
+            string BrosWhoCream = "Images/BrosWhoCream.png";
+            connectionManager.AddNewServer("Bros Who Cream", 698766770923896842, 903550022853984278, BrosWhoCream, _client);
+
 
         }
 
