@@ -23,7 +23,7 @@ namespace MonkeyAllianceBot.Modules
 
         [Command("stop", RunMode = RunMode.Async)]
         [Alias("Restart", "Update")]
-        [RequireUserPermission(GuildPermission.Administrator)]
+        //[RequireUserPermission(GuildPermission.Administrator)]
         public async Task Stop()
         {
             _logger.LogInformation($"{Context.User.Username} executed the stop command! Exiting now.");
