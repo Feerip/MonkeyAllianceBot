@@ -122,7 +122,7 @@ namespace MonkeyAllianceBot.Services
             connectionManager.AddExistingServer("Bros Who Cream", 698766770923896842, 903550022853984278, BrosWhoCream, _client);
 
             string TurkeyKillers = "Images/TurkeyKillers.png";
-            connectionManager.AddNewServer("Turkey Killers", 895127618519728148, 903064931014955108, TurkeyKillers, _client);
+            connectionManager.AddExistingServer("Turkey Killers", 903064931014955108, 895127618519728148, TurkeyKillers, _client); 
 
 
         }
