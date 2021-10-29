@@ -108,15 +108,15 @@ namespace MonkeyAllianceBot.Services
 #endif
 
             string Dog = "Images/dog-eyebrow.gif";
-            string Rat = "Images/large-ugly-rat.jpg";
-            string Doge = "Images/dogecoin_head.png";
+            //string Rat = "Images/large-ugly-rat.jpg";
+            //string Doge = "Images/dogecoin_head.png";
 
-            connectionManager.AddExistingServer("Dog", 901581446618169344, 902080736197242901, Dog, _client);
-            connectionManager.AddExistingServer("Rat", 771103419023753226, 902077849513652234, Rat, _client);
-            connectionManager.AddExistingServer("Woof", 902051653656641557, 902087868258877491, Doge, _client);
+            connectionManager.AddNewServer("Dog", 901581446618169344, 902080736197242901, Dog, _client);
+            //connectionManager.AddExistingServer("Rat", 771103419023753226, 902077849513652234, Rat, _client);
+            //connectionManager.AddExistingServer("Woof", 902051653656641557, 902087868258877491, Doge, _client);
 
             string DarkGrimoire = "Images/DarkGrimoire.png";
-            //connectionManager.AddNewServer(DarkGrim
+            connectionManager.AddNewServer("Dark Grimoire", 625996199597703168, 902989021209317456, DarkGrimoire, _client);
 
 
         }
