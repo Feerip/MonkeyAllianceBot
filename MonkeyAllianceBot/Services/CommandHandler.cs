@@ -116,15 +116,15 @@ namespace MonkeyAllianceBot.Services
             //connectionManager.AddExistingServer("Woof", 902051653656641557, 902087868258877491, Doge, _client);
 
             string DarkGrimoire = "Images/DarkGrimoire.png";
-            connectionManager.AddExistingServer("Dark Grimoire", 625996199597703168, 902989021209317456, DarkGrimoire, _client);
+            connectionManager.AddNewServer("Dark Grimoire", 625996199597703168, 902989021209317456, DarkGrimoire, _client);
 
             string BrosWhoCream = "Images/BrosWhoCream.png";
-            connectionManager.AddExistingServer("Bros Who Cream", 698766770923896842, 903550022853984278, BrosWhoCream, _client);
+            connectionManager.AddNewServer("Bros Who Cream", 698766770923896842, 903550022853984278, BrosWhoCream, _client);
 
             string TurkeyKillers = "Images/TurkeyKillers.png";
-            connectionManager.AddExistingServer("Turkey Killers", 895127618519728148, 903064931014955108, TurkeyKillers, _client);
+            connectionManager.AddNewServer("Turkey Killers", 895127618519728148, 903064931014955108, TurkeyKillers, _client);
 
-            connectionManager.Clear();
+            //connectionManager.Clear();
                 
 
         }
