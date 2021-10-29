@@ -115,6 +115,9 @@ namespace MonkeyAllianceBot.Services
             connectionManager.AddExistingServer("Rat", 771103419023753226, 902077849513652234, Rat, _client);
             connectionManager.AddExistingServer("Woof", 902051653656641557, 902087868258877491, Doge, _client);
 
+            string DarkGrimoire = "Images/DarkGrimoire.png";
+            //connectionManager.AddNewServer(DarkGrim
+
 
         }
 
@@ -197,10 +200,10 @@ namespace MonkeyAllianceBot.Services
 
 
                 //REMOVE THIS LATER
-                //if (context.Message.Content.Equals("clear", StringComparison.OrdinalIgnoreCase))
-                //{
-                //    connectionManager.Clear();
-                //}
+                if (context.Message.Content.Equals("clear", StringComparison.OrdinalIgnoreCase))
+                {
+                    connectionManager.Clear();
+                }
 
             }
 
