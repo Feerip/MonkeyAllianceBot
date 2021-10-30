@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Discord;
 
 namespace MonkeyAllianceBot
 {
@@ -18,14 +19,14 @@ namespace MonkeyAllianceBot
             _serverAllianceChannels = new();
         }
 
-        public void AddExistingServer(string companyName, ulong allianceServerID, ulong allianceChannelID, string avatar, DiscordSocketClient client)
+        public void AddExistingServer(string companyName, ulong allianceServerID, ulong allianceChannelID, string avatar, DiscordSocketClient client, Color? companyColor = null)
         {
-            _serverAllianceChannels.Add(allianceChannelID, new(companyName, allianceServerID, allianceChannelID, avatar, client));
+            _serverAllianceChannels.Add(allianceChannelID, new(companyName, allianceServerID, allianceChannelID, avatar, client, companyColor));
         }
 
-        public void AddNewServer(string companyName, ulong allianceServerID, ulong allianceChannelID, string avatar, DiscordSocketClient client)
+        public void AddNewServer(string companyName, ulong allianceServerID, ulong allianceChannelID, string avatar, DiscordSocketClient client, Color? companyColor = null)
         {
-            AddExistingServer(companyName, allianceServerID, allianceChannelID, avatar, client);
+            AddExistingServer(companyName, allianceServerID, allianceChannelID, avatar, client, companyColor);
 
             foreach (var server in _serverAllianceChannels)
             {
@@ -44,14 +45,34 @@ namespace MonkeyAllianceBot
             return _serverAllianceChannels.ContainsKey(channelID);
         }
 
-        public void SendMessageToAllAllianceChannels(ulong origin, string author, string message)
+        public void SendMessageToAllAllianceChannels(ulong origin, SocketCommandContext context)
         {
             foreach (KeyValuePair<ulong, AllianceServer> serverAllianceChannel in _serverAllianceChannels)
             {
-                string prefix = "**" + author + ":**\n> ";
+                //    string prefix = "**" + author + ":**\n> ";
+
+                //    if (serverAllianceChannel.Key != origin)
+                //    {
+                //         serverAllianceChannel.Value[_serverAllianceChannels[origin].CompanyName].SendMessageAsync(prefix + message);
+                //    }
+                EmbedBuilder builder = new EmbedBuilder()
+                    .WithAuthor(context.Guild.GetUser(context.User.Id).Nickname, iconUrl: context.User.GetAvatarUrl())
+                    //.WithTitle(context.User.Mention)
+                    .WithDescription(context.Message.Content)
+                    .WithFooter(context.User.Mention)
+                    //.AddField("\u200B", context.User.Mention)
+                    .WithColor(_serverAllianceChannels[origin].CompanyColor)
+
+                    ;
+                if (context.Message.Attachments.Count > 0)
+                {
+                    builder.WithImageUrl(context.Message.Attachments.ToList().First().Url);
+                }
+                Embed emb = builder.Build();
+
                 if (serverAllianceChannel.Key != origin)
                 {
-                     serverAllianceChannel.Value[_serverAllianceChannels[origin].CompanyName].SendMessageAsync(prefix + message);
+                    serverAllianceChannel.Value[_serverAllianceChannels[origin].CompanyName].SendMessageAsync(embeds: new[] { emb });
                 }
             }
 

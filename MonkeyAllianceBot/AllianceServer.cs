@@ -21,16 +21,25 @@ namespace MonkeyAllianceBot
         public ulong AllianceServerID { get; private set; }
         public ulong AllianceChannelID { get; private set; }
         public string Avatar { get; private set; }
+
+        public Color CompanyColor = new(102, 0, 204);
+        //public Color CompanyColor = new(255, 255, 255);
         
         private Dictionary<string, DiscordWebhookClient> Webhooks { get; set; }
 
-        public AllianceServer(string companyName, ulong allianceServerID, ulong allianceChannelID, string avatar, DiscordSocketClient client)
+        public AllianceServer(string companyName, ulong allianceServerID, ulong allianceChannelID, string avatar, DiscordSocketClient client, Color? companyColor = null)
         {
             CompanyName = companyName;
             AllianceServerID = allianceServerID;
             AllianceChannelID = allianceChannelID;
             Avatar = avatar;
-            
+
+
+            if (companyColor != null)
+            {
+                CompanyColor = (Color)companyColor;
+            }
+
             RefreshServerStatus(client);
         }
 

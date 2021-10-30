@@ -11,6 +11,8 @@ using System.IO;
 using System.Threading.Tasks;
 using MonkeyAllianceBot.Services;
 
+
+
 namespace MonkeyAllianceBot
 {
     internal class Program
@@ -22,7 +24,11 @@ namespace MonkeyAllianceBot
                    {
                        IConfigurationRoot configuration = new ConfigurationBuilder()
                            .SetBasePath(Directory.GetCurrentDirectory())
+#if DEBUG
+                           .AddJsonFile("Config/appsettings_debug.json", false, true)
+#else
                            .AddJsonFile("Config/appsettings.json", false, true)
+#endif
                            .Build();
 
                        x.AddConfiguration(configuration);

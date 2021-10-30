@@ -107,25 +107,27 @@ namespace MonkeyAllianceBot.Services
             Parallel.ForEach(intlist, (i) => service.LeaderboardAtResetStartAsync(new CancellationToken(), i, 02));
 #endif
 
-            //string Dog = "Images/dog-eyebrow.gif";
-            //string Rat = "Images/large-ugly-rat.jpg";
-            //string Doge = "Images/dogecoin_head.png";
+#if DEBUG
+            string Dog = "Images/dog-eyebrow.gif";
+            string Rat = "Images/large-ugly-rat.jpg";
+            string Doge = "Images/dogecoin_head.png";
 
-            //connectionManager.AddExistingServer("Dog", 901581446618169344, 902080736197242901, Dog, _client);
-            //connectionManager.AddExistingServer("Rat", 771103419023753226, 902077849513652234, Rat, _client);
-            //connectionManager.AddExistingServer("Woof", 902051653656641557, 902087868258877491, Doge, _client);
+            connectionManager.AddExistingServer("Dog", 901581446618169344, 902080736197242901, Dog, _client);
+            connectionManager.AddExistingServer("Rat", 771103419023753226, 902077849513652234, Rat, _client);
+            connectionManager.AddExistingServer("Woof", 902051653656641557, 902087868258877491, Doge, _client);
 
+#else
             string DarkGrimoire = "Images/DarkGrimoire.png";
             connectionManager.AddExistingServer("Dark Grimoire", 625996199597703168, 902989021209317456, DarkGrimoire, _client);
 
             string BrosWhoCream = "Images/BrosWhoCream.png";
-            connectionManager.AddExistingServer("Bros Who Cream", 698766770923896842, 903550022853984278, BrosWhoCream, _client);
+            connectionManager.AddExistingServer("Bros Who Cream", 698766770923896842, 903550022853984278, BrosWhoCream, _client, new(255, 255, 0));
 
             string TurkeyKillers = "Images/TurkeyKillers.png";
             connectionManager.AddExistingServer("Turkey Killers", 895127618519728148, 903064931014955108, TurkeyKillers, _client);
-
+#endif
             //connectionManager.Clear();
-                
+
 
         }
 
@@ -203,7 +205,7 @@ namespace MonkeyAllianceBot.Services
 
                 if (connectionManager.serverAllianceChannelKnown(context.Channel.Id))
                 {
-                    connectionManager.SendMessageToAllAllianceChannels(context.Channel.Id, nickName, context.Message.Content);
+                    connectionManager.SendMessageToAllAllianceChannels(context.Channel.Id, context);
                 }
 
 
